@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@theme {
+  --font-sans:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@keyframes liquid-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    transform: translate(30px, -50px) scale(1.06);
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    transform: translate(-20px, 25px) scale(0.94);
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+  }
+  75% {
+    transform: translate(20px, 10px) scale(1.04);
+    border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%;
+  }
+}
+
+@keyframes liquid-float-reverse {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+  }
+  25% {
+    transform: translate(-25px, 40px) scale(1.08);
+    border-radius: 60% 30% 40% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    transform: translate(30px, -20px) scale(0.92);
+    border-radius: 60% 40% 60% 40% / 70% 50% 50% 30%;
+  }
+  75% {
+    transform: translate(-10px, -30px) scale(1.05);
+    border-radius: 30% 70% 30% 70% / 40% 60% 40% 60%;
+  }
+}
+
+.blob-1 {
+  animation: liquid-float 10s ease-in-out infinite;
+}
+.blob-2 {
+  animation: liquid-float-reverse 13s ease-in-out infinite;
+  animation-delay: -3s;
+}
+.blob-3 {
+  animation: liquid-float 9s ease-in-out infinite;
+  animation-delay: -5s;
+}
+.blob-4 {
+  animation: liquid-float-reverse 15s ease-in-out infinite;
+  animation-delay: -7s;
+}
+.blob-5 {
+  animation: liquid-float 12s ease-in-out infinite;
+  animation-delay: -2s;
+}
