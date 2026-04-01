@@ -59,6 +59,14 @@ export default function AppNavbar() {
             Home
           </Link>
         </NavbarItem>
+        <NavbarItem>
+          <Link
+            to="/landing"
+            className="text-default-600 hover:text-primary transition-colors"
+          >
+            About
+          </Link>
+        </NavbarItem>
         {user && (
           <NavbarItem>
             <Link
@@ -237,6 +245,15 @@ export default function AppNavbar() {
             onClick={() => setIsMenuOpen(false)}
           >
             Home
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link
+            to="/landing"
+            className="w-full text-default-700"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About
           </Link>
         </NavbarMenuItem>
 

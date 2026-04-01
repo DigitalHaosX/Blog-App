@@ -10,6 +10,7 @@ import EditArticle from "./pages/EditArticle";
 import Login from "./pages/Login";
 import Gift from "./pages/Gift";
 import Dashboard from "./pages/Dashboard";
+import LandingPage from "./pages/LandingPage";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <div className="flex-1 flex flex-col">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/landing" element={<LandingPage />} />
           <Route path="/article/:id" element={<ArticleDetails />} />
           <Route
             path="/create"
