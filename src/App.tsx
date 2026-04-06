@@ -8,6 +8,7 @@ import ArticleDetails from "./pages/ArticleDetails";
 import CreateArticle from "./pages/CreateArticle";
 import EditArticle from "./pages/EditArticle";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Gift from "./pages/Gift";
 import Dashboard from "./pages/Dashboard";
 import LandingPage from "./pages/LandingPage";
@@ -39,6 +40,7 @@ export default function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/gift" element={<Gift />} />
           <Route
             path="/dashboard"

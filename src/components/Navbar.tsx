@@ -36,25 +36,28 @@ export default function AppNavbar() {
   };
 
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
-      {/* Mobile toggle */}
-      <NavbarContent className="sm:hidden" justify="start">
-        <NavbarMenuToggle aria-label="Toggle menu" />
+    <Navbar
+      isBordered
+      maxWidth="full"
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
+      {/* Left: mobile toggle + brand */}
+      <NavbarContent justify="start">
+        <NavbarMenuToggle aria-label="Toggle menu" className="sm:hidden" />
+        <NavbarBrand>
+          <Link to="/" className="font-bold text-xl text-primary">
+            My Blog
+          </Link>
+        </NavbarBrand>
       </NavbarContent>
 
-      {/* Brand */}
-      <NavbarBrand>
-        <Link to="/" className="font-bold text-xl text-primary">
-          My Blog
-        </Link>
-      </NavbarBrand>
-
       {/* Desktop nav links */}
-      <NavbarContent className="hidden sm:flex gap-6" justify="center">
+      <NavbarContent className="hidden sm:flex gap-2" justify="center">
         <NavbarItem>
           <Link
             to="/"
-            className="text-default-600 hover:text-primary transition-colors"
+            className="px-4 py-2 rounded-xl text-base font-medium text-default-600 hover:text-primary bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-primary/15 hover:border-primary/30 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200"
           >
             Home
           </Link>
@@ -62,7 +65,7 @@ export default function AppNavbar() {
         <NavbarItem>
           <Link
             to="/landing"
-            className="text-default-600 hover:text-primary transition-colors"
+            className="px-4 py-2 rounded-xl text-base font-medium text-default-600 hover:text-primary bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-primary/15 hover:border-primary/30 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200"
           >
             About
           </Link>
@@ -71,7 +74,7 @@ export default function AppNavbar() {
           <NavbarItem>
             <Link
               to="/create"
-              className="text-default-600 hover:text-primary transition-colors"
+              className="px-4 py-2 rounded-xl text-base font-medium text-default-600 hover:text-primary bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-primary/15 hover:border-primary/30 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200"
             >
               New Article
             </Link>
@@ -81,7 +84,7 @@ export default function AppNavbar() {
           <NavbarItem>
             <Link
               to="/dashboard"
-              className="text-default-600 hover:text-primary transition-colors"
+              className="px-4 py-2 rounded-xl text-base font-medium text-default-600 hover:text-primary bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-primary/15 hover:border-primary/30 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200"
             >
               Dashboard
             </Link>
@@ -226,11 +229,8 @@ export default function AppNavbar() {
               variant="flat"
               size="sm"
               onPress={() => navigate("/login")}
-              startContent={
-                <Avatar size="sm" name="?" className="w-5 h-5 text-tiny" />
-              }
             >
-              Login
+              Log in
             </Button>
           </NavbarItem>
         )}

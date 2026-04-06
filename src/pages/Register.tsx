@@ -2,24 +2,29 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Card, CardBody, Input, Button, Divider } from "@heroui/react";
 import { auth } from "../services/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (password !== confirm) {
+      setError("Passwords do not match.");
+      return;
+    }
     setError("");
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       navigate("/");
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Login failed.");
+      setError(err instanceof Error ? err.message : "Registration failed.");
     } finally {
       setLoading(false);
     }
@@ -30,13 +35,13 @@ export default function Login() {
       <Card className="w-full max-w-sm">
         <CardBody className="gap-4 p-6">
           <h1 className="text-2xl font-bold text-foreground text-center">
-            Welcome Back
+            Create Account
           </h1>
           <p className="text-default-500 text-center text-sm">
-            Sign in to your account
+            Sign up to get started
           </p>
           <Divider />
-          <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <form onSubmit={handleRegister} className="flex flex-col gap-4">
             <Input
               type="email"
               label="Email"
@@ -55,18 +60,27 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               isRequired
             />
+            <Input
+              type="password"
+              label="Confirm Password"
+              variant="bordered"
+              placeholder="••••••••"
+              value={confirm}
+              onChange={(e) => setConfirm(e.target.value)}
+              isRequired
+            />
             {error && <p className="text-danger text-sm">{error}</p>}
             <Button color="primary" type="submit" isLoading={loading} fullWidth>
-              Sign In
+              Create Account
             </Button>
           </form>
           <p className="text-center text-sm text-default-500">
-            Don&apos;t have an account?{" "}
+            Already have an account?{" "}
             <Link
-              to="/register"
+              to="/login"
               className="text-primary font-medium hover:underline"
             >
-              Create one
+              Sign in
             </Link>
           </p>
         </CardBody>
